@@ -83,7 +83,7 @@ exports.fetchReservasActivas = async (idCliente) => {
             JOIN Libro L ON R.idLibro = L.id
             JOIN Autor A ON L.idAutor = A.id
             WHERE R.idCliente = @idCliente
-            AND R.estadoReserva = 1;
+            AND R.estadoReserva = 3;
         `;
         
         const result = await pool.request()
@@ -119,7 +119,7 @@ exports.fetchMultasPendientes = async (idCliente) => {
             INNER JOIN Libro L ON E.idLibro = L.id 
             WHERE M.idCliente = @idCliente
             AND M.estadoPago = 0; -- 💡 NOTA: M.estado = 1 solo verifica que la multa está activa. 
-                                  -- Para "pendientes", generalmente se usa M.estadoPago = 1 (Pendiente).
+                                  -- Para "pendientes", generalmente se usa M.estadoPago =  (Pendiente).
         `;
 
         const result = await pool.request()
