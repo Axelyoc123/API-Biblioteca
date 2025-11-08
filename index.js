@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 });
 
 // ---------------------------------------------
-// 🔌 CONEXIÓN A LA BASE DE DATOS Y ARRANQUE DEL SERVIDOR
+// CONEXIÓN A LA BASE DE DATOS Y ARRANQUE DEL SERVIDOR
 // ---------------------------------------------
 connectDB()
   .then(() => {

@@ -19,7 +19,7 @@ exports.fetchPrestamosVigentes = async (idCliente) => {
             JOIN Libro L ON E.idLibro = L.id
             JOIN Autor A ON L.idAutor = A.id
             WHERE P.idCliente = @idCliente
-            AND P.fechaDevolucion IS NULL 
+            AND P.fechaDevolucion IS NOT NULL 
             AND P.estado = 1;
         `;
         
@@ -118,7 +118,7 @@ exports.fetchMultasPendientes = async (idCliente) => {
             INNER JOIN Ejemplar E ON P.idEjemplar = E.id
             INNER JOIN Libro L ON E.idLibro = L.id 
             WHERE M.idCliente = @idCliente
-            AND M.estadoPago = 1; -- 💡 NOTA: M.estado = 1 solo verifica que la multa está activa. 
+            AND M.estadoPago = 0; -- 💡 NOTA: M.estado = 1 solo verifica que la multa está activa. 
                                   -- Para "pendientes", generalmente se usa M.estadoPago = 1 (Pendiente).
         `;
 

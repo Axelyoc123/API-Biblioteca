@@ -26,12 +26,6 @@ exports.login = async (req, res) => {
 
     const user = result.recordset[0];
     console.log({user});
-    // Compara la contraseña ingresada con el hash guardado
-    // const validPassword = await bcrypt.compare(password, user.password);
-    // console.log({validPassword});
-    // if (!validPassword) {
-    //   return res.status(401).json({ error: 'Contraseña incorrecta.' });
-    // }
 
     // Generar el token
     const token = jwt.sign(
