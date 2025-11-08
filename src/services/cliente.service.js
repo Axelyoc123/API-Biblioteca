@@ -75,7 +75,7 @@ exports.fetchReservasActivas = async (idCliente) => {
                 R.fechaReserva, R.posicionCola, 
                 L.titulo, A.nombre AS autor,
                 CASE R.estadoReserva 
-                    WHEN 1 THEN 'Activa' 
+                    WHEN 3 THEN 'Activa' 
                     WHEN 2 THEN 'Vencida'
                     ELSE 'Otro'
                 END AS estadoReserva
