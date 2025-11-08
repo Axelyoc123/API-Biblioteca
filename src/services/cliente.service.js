@@ -75,15 +75,15 @@ exports.fetchReservasActivas = async (idCliente) => {
                 R.fechaReserva, R.posicionCola, 
                 L.titulo, A.nombre AS autor,
                 CASE R.estadoReserva 
-                    WHEN 3 THEN 'Activa' 
-                    WHEN 2 THEN 'Vencida'
+                    WHEN 2 THEN 'Activa' 
+                    WHEN 1 THEN 'Vencida'
                     ELSE 'Otro'
                 END AS estadoReserva
             FROM Reserva R
             JOIN Libro L ON R.idLibro = L.id
             JOIN Autor A ON L.idAutor = A.id
             WHERE R.idCliente = @idCliente
-            AND R.estadoReserva = 3;
+            AND R.estadoReserva = 2;
         `;
         
         const result = await pool.request()
