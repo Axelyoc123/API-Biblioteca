@@ -109,8 +109,8 @@ exports.fetchMultasPendientes = async (idCliente) => {
                 M.monto,
                 M.diasAtraso,
                 CASE 
-                    WHEN M.estadoPago = 1 THEN 'Pendiente'
-                    WHEN M.estadoPago = 0 THEN 'Pagada'
+                    WHEN M.estadoPago = 1 THEN 'Pagado'
+                    WHEN M.estadoPago = 0 THEN 'Pendiente'
                     ELSE 'Desconocido'
                 END AS estadoPago
             FROM Multa M
